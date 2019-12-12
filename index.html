@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Modern Bible Helper</title>
+</head>
+<body>
+    BookID
+    <input id="book" style="width: 500px" />
+    <br />
+    BookName
+    <input id="bookName" style="width: 500px" />
+    <br />
+
+    Chapter
+    <input id="chapter" style="width: 500px" value="1"/>
+    <button id="addChapter" onclick="AddChapter();">Chapter+</button>
+    <br />
+    Verse
+    <input id="verse" style="width: 500px" value="1"/>    
+    <br />
+
+
+    -CONTENT-
+    <textarea id="input" style="width: 600px" onkeypress="PressedEnter(event);"></textarea>
+    <br /><br />
+    <button id="submit" onclick="Submit();">Go</button>
+    <br /><br />
+    <textarea id="output" style="text-align: start; width: 600px; height: 60px;"></textarea>
+
+    <script>
+
+        
+
+        function Submit () {
+            document.getElementById("output").value += "insert into Bible (BookID, BookName, Chapter, Verse, Content) VALUES (" + document.getElementById("book").value + ", '" + document.getElementById("bookName").value + "', " + document.getElementById("chapter").value + ", " + document.getElementById("verse").value + ", '" + (document.getElementById("input").value).replace("'", "`") + "')\n";
+            document.getElementById("input").value = "";
+            document.getElementById("verse").value = parseInt(document.getElementById("verse").value) + 1;
+        };
+
+        function AddChapter(){
+            document.getElementById("chapter").value = parseInt(document.getElementById("chapter").value, 10) + 1;
+            document.getElementById("verse").value = 1;
+        };
+
+        function PressedEnter(e){
+            var keycode = (e.keyCode ? e.keyCode : e.which);
+            if (keycode == '13')
+                Submit();            
+        };
+
+
+    </script>
+</body>
+</html>

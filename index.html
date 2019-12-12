@@ -33,7 +33,7 @@
         
 
         function Submit () {
-            document.getElementById("output").value += "insert into Bible (BookID, BookName, Chapter, Verse, Content) VALUES (" + document.getElementById("book").value + ", '" + document.getElementById("bookName").value + "', " + document.getElementById("chapter").value + ", " + document.getElementById("verse").value + ", '" + (document.getElementById("input").value).replace("'", "`") + "')\n";
+            document.getElementById("output").value += "insert into Bible (BookID, BookName, Chapter, Verse, Content) VALUES (" + document.getElementById("book").value + ", '" + document.getElementById("bookName").value + "', " + document.getElementById("chapter").value + ", " + document.getElementById("verse").value + ", '" + (document.getElementById("input").value).replace("'", "`") + "');\n";
             document.getElementById("input").value = "";
             document.getElementById("verse").value = parseInt(document.getElementById("verse").value) + 1;
         };

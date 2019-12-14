@@ -22,7 +22,7 @@
 
 
     -CONTENT-
-    <textarea id="input" style="width: 600px" onkeyup="PressedEnter(event);"></textarea>
+    <textarea id="input" style="width: 600px" onkeydown="PressedEnter(event);"></textarea>
     <br /><br />
     <button id="submit" onclick="Submit();">Go</button>
     <br /><br />
@@ -45,8 +45,10 @@
 
         function PressedEnter(e){
             var keycode = (e.keyCode ? e.keyCode : e.which);
-            if (keycode == '13')
-                Submit();            
+            if (keycode == '13'){    
+                event.preventDefault();            
+                Submit();        
+            }
         };
 
 
